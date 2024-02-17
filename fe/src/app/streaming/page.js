@@ -18,12 +18,13 @@ const Streaming = () => {
   const handleSubmit = async (event) => {
     // Reset to blank
     setStreamedWords([]);
+
     event.preventDefault();
     const formData = new FormData();
     formData.append('text', textInput);
 
     try {
-      const response = await fetch('http://localhost:5000/stream_words', {
+      const response = await fetch(`${process.env.BE_URL}/stream_words`, {
         method: 'POST',
         body: formData,
       });
