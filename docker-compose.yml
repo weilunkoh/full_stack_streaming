@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  fe:
+    image: full-stack-streaming-fe:0.0.1
+    build:
+      context: ./fe
+      dockerfile: Dockerfile
+    container_name: fe
+  be:
+    image: full-stack-streaming-be:0.0.1
+    build:
+      context: ./be
+      dockerfile: Dockerfile
+    container_name: be
+    env_file:
+      - ./be/.env
+  nginx:
+    image: full-stack-streaming-nginx:0.0.1
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: nginx
+    depends_on:
+      - fe
+      - be
+    ports:
+      - "80:80"
