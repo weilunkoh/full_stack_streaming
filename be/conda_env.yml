@@ -1,0 +1,10 @@
+name: full_stack_streaming
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.10.13
+  - pip=23.3.1
+  - pip:
+    - flask==3.0.2
+    - flask-cors==4.0.0
