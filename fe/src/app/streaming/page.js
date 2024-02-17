@@ -48,13 +48,13 @@ const Streaming = () => {
   const generateRandomParagraph = () => {
     const randomParagraphs = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget felis auctor, bibendum urna sit amet, varius sapien.',
-      'Sed auctor, mi nec fermentum convallis, odio nunc tincidunt metus, et ultricies nunc justo nec arcu.',      
+      'Sed auctor, mi nec fermentum convallis, odio nunc tincidunt metus, et ultricies nunc justo nec arcu.',
     ];
 
-    if (textInput != randomParagraphs[0] && textInput != randomParagraphs[1]){
+    if (textInput != randomParagraphs[0] && textInput != randomParagraphs[1]) {
       const randomIndex = Math.floor(Math.random() * randomParagraphs.length);
       setTextInput(randomParagraphs[randomIndex]);
-    } else if (textInput == randomParagraphs[0]){
+    } else if (textInput == randomParagraphs[0]) {
       setTextInput(randomParagraphs[1]);
     } else {
       setTextInput(randomParagraphs[0]);
@@ -75,15 +75,15 @@ const Streaming = () => {
         <Typography variant="h4" component="h1" sx={{ mb: 2 }}>
           Text Streaming Example
         </Typography>
-        
+
         <Box component="form" onSubmit={handleSubmit} sx={{ maxWidth: 'xl', width: '75%' }}>
-          <Button 
-            variant="contained" 
+          <Button
+            variant="contained"
             color="secondary"
             fullWidth
             onClick={generateRandomParagraph}
           >
-            Generate Random Paragpraph
+            Generate Random Paragraph
           </Button>
           <TextField
             margin="normal"
@@ -104,7 +104,7 @@ const Streaming = () => {
             Submit
           </Button>
         </Box>
-        <Box sx={{ mt: 3, width: '75%', textAlign: 'justify'}}>
+        <Box sx={{ mt: 3, width: '75%', textAlign: 'justify' }}>
           <Typography variant="h6" component="h2">
             Streaming Output:
           </Typography>
@@ -112,11 +112,11 @@ const Streaming = () => {
             {streamedWords.join(' ')}
           </Typography>
         </Box>
-        <Typography sx={{mt: 6}}>
+        <Typography sx={{ mt: 6 }}>
           <Link href="/" color="secondary" component={NextLink}>
             Return to Home
           </Link>
-        </Typography> 
+        </Typography>
       </Box>
     </Container>
   );
