@@ -22,7 +22,7 @@ const Streaming = () => {
     const formData = new FormData();
     formData.append('text', textInput);
 
-    // try {
+    try {
       const response = await fetch('http://localhost:5000/stream_words', {
         method: 'POST',
         body: formData,
@@ -40,9 +40,9 @@ const Streaming = () => {
 
         setStreamedWords((prevWords) => [...prevWords, stringValue]);
       }
-    // } catch (error) {
-    //   console.error('Error fetching streamed words:', error);
-    // }
+    } catch (error) {
+      console.error('Error fetching streamed words:', error);
+    }
   };
 
   const generateRandomParagraph = () => {
@@ -50,8 +50,15 @@ const Streaming = () => {
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget felis auctor, bibendum urna sit amet, varius sapien.',
       'Sed auctor, mi nec fermentum convallis, odio nunc tincidunt metus, et ultricies nunc justo nec arcu.',      
     ];
-    const randomIndex = Math.floor(Math.random() * randomParagraphs.length);
-    setTextInput(randomParagraphs[randomIndex]);
+
+    if (textInput != randomParagraphs[0] && textInput != randomParagraphs[1]){
+      const randomIndex = Math.floor(Math.random() * randomParagraphs.length);
+      setTextInput(randomParagraphs[randomIndex]);
+    } else if (textInput == randomParagraphs[0]){
+      setTextInput(randomParagraphs[1]);
+    } else {
+      setTextInput(randomParagraphs[0]);
+    }
   }
 
   return (

@@ -2,10 +2,14 @@ from flask import Flask, request, Response
 from flask_cors import CORS 
 import time
 import json
+import os
+from dotenv import load_dotenv
+
+load_dotenv()  # take environment variables from .env.
 
 app = Flask(__name__)
 # CORS(app) # Allow all origins
-CORS(app, origins="http://localhost:3000")
+CORS(app, origins=os.getenv("FE_URL"))
 
 @app.route('/stream_words', methods=['POST'])
 def stream_words():
@@ -16,9 +20,8 @@ def stream_words():
 
     def generate():
         for word in words:
-            print(word)
-            time.sleep(0.5)  # Simulate processing time
-            yield word + " "
+            time.sleep(0.25)  # Simulate processing time
+            yield word
 
     return Response(generate(), content_type='application/json', status=200)
 

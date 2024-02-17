@@ -1,0 +1,16 @@
+.git
+.vscode
+.**_cache
+__pycache__
+
+data/*
+notebooks/*
+deployment/*
+
+Dockerfile
+README.md
+.gitignore
+README.md
+
+*.tar.gz
+*.bat
